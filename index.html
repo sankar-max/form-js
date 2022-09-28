@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">form registration</div>
+    </div>    
+        <div class="forms">
+            <form action="" method="post" id="form">
+                <label for="">user name</label><br>
+                <input type="text" placeholder="user name" id="name">
+                <p id="error1"></p>
+                <label for="">email</label><br>
+                <input type="mail" placeholder="email" id="mail">
+                <p id="error2"></p>
+                <label for="">password</label><br>
+                <input type="password" placeholder="passs word" id="pass">
+                <p id="error3"></p>
+                <label for="">confirm password</label><br>
+                <input type="password" placeholder="confirmpassword" id="cpassword">
+                <p id="error4"></p>
+                <label for="">date</label>
+                <input type="date"><br><br>
+                <label for="">gender</label>
+                <input type="radio" name="gender">male
+                <input type="radio" name="gender">female <br><br>
+                <input type="checkbox">i agree <br><br>
+                <label for="">which course you will study?</label><br>
+                <select>
+                    <option value="">HTML</option>
+                    <option value="">CSS</option>
+                    <option value="">JAVA SCRIPT</option>
+                </select><br><br>
+                <button onclick="formvalidation()" class="sub">submit</button>
+            </form>
+        </div>
+    
+    <!-- ======================= js ============================= -->
+    <script>
+     form.addEventListener('submit',e => {
+      e.preventDefault(); 
+});   
+ function formvalidation(){
+    var name=document.getElementById("name").value
+    var fnamepattern=/^([a-zA-Z]|\s)*$/;
+    if (name==null||name==""){
+        document.getElementById("error1").innerHTML="please enter the name";
+    }
+    else if(!fnamepattern.test(name)){
+        document.getElementById("error1").innerHTML="please enter the validname";
+    }
+    else{
+        document.getElementById("error1").innerHTML="";
+    }
+/* ============================    mail  ======================================== */
+    
+    var mail=document.getElementById("mail").value
+    var gmailpattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(mail==null||mail==""){
+    document.getElementById("error2").innerHTML="please enter the email";
+    }
+    else if(!gmailpattern.test(mail)){
+        document.getElementById("error2").innerHTML="please enter the valid email"; 
+    }
+    else{
+        document.getElementById("error2").innerHTML="";
+    }
+    /* ======================================================================================== */
+    var password=document.getElementById("pass").value;
+    var passpattern=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{1,7}$/;
+    if(password==null||password==""){
+    document.getElementById("error3").innerHTML="please enter the password";
+    }
+    /* else if(!passpattern.test(password)){
+        document.getElementById("head2").innerHTML="password must be special charactor"; 
+    } */
+    else{
+        document.getElementById("error3").innerHTML="";
+    }
+    /* ======================================================================================= */
+     var cpassword=document.getElementById("cpassword").value
+    if(cpassword==null||cpassword==""){
+        document.getElementById("error4").innerHTML="please enter the password";
+    }
+    else if(password !== cpassword){
+        document.getElementById("error4").innerHTML="password does not match"
+    }
+    else{
+        document.getElementById("error4").innerHTML="";
+    } 
+ /* ======================================================================================== */
+    
+}
+
+    </script>
+</body>
+</html>
